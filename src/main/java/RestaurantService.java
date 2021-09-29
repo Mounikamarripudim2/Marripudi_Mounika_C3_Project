@@ -29,4 +29,7 @@ public class RestaurantService {
         return restaurants;
     }
 
+    public String getOrderTotal(Restaurant restaurant){
+        return "";
+    }
 }

@@ -67,4 +67,28 @@ public class Restaurant {
         return name;
     }
 
+    //Part 3 - New feature Implementation
+    private Item findItemByNameinSelectedList(String itemName){
+        for(Item item: selectedItems) {
+            if(item.getName().equals(itemName))
+                return item;
+        }
+        return null;
+    }
+
+    public void addToCart(String name, int price) {
+        Item newItem = new Item(name,price);
+        selectedItems.add(newItem);
+    }
+
+    public void removeFromCart(Item item) throws itemNotFoundException {
+        Item itemToBeRemoved = findItemByNameinSelectedList(item.getName());
+        if (itemToBeRemoved == null)
+            throw new itemNotFoundException(item.getName());
+        menu.remove(item);
+    }
+
+    public List<Item> getSelectedItems() {
+        return this.selectedItems;
+    }
 }
