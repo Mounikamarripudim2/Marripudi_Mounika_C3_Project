@@ -30,6 +30,11 @@ public class RestaurantService {
     }
 
     public String getOrderTotal(Restaurant restaurant){
-        return "";
+        List<Item> selectedItems = restaurant.getSelectedItems();
+        int orderTotal=0;
+        for (Item item: selectedItems) {
+            orderTotal=orderTotal+item.getPrice();
+        }
+        return "Your order will cost: \u20B9"+ orderTotal;
     }
 }
